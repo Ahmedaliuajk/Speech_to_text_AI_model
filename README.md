@@ -14,7 +14,7 @@ It is built with **FastAPI** and runs locally or on a server.
 
 ### 1. Clone this repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/whisper-api.git
+git clone https://github.com/Ahmedaliuajk/Whisper_model_audio_to_text/tree/main
 cd whisper-api
 
 ### 2. Install dependencies
@@ -71,7 +71,7 @@ Device: "cpu" or "cuda" (if GPU available)
 
 Compute type: int8, float16, float32 (affects speed/accuracy)
 
-👨‍💻 Author
+Author
 Developed by Ahmed Ali during internship.
 Uses OpenAI Whisper + FastAPI.
 
