@@ -17,7 +17,7 @@ Simple REST API endpoint /transcribe.
 
 Clone this repository:
 
-git clone https://github.com/YOUR_USERNAME/whisper-api.git
+git clone https://github.com/Ahmedaliuajk/Speech_to_text_AI_model.git
 cd whisper-api
 
 
