@@ -23,10 +23,10 @@ cd whisper-api
 
 Create a virtual environment:
 
-python -m venv venv
-venv\Scripts\activate    # On Windows
-# OR
-source venv/bin/activate # On Mac/Linux
+```python -m venv venv```
+```venv\Scripts\activate  ```  # On Windows
+#### OR
+```source venv/bin/activate ```# On Mac/Linux
 
 
 Install dependencies:
