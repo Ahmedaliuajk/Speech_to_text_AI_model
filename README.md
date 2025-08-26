@@ -1,77 +1,84 @@
-# Whisper Speech-to-Text API 🎤➡️📝
+## Whisper Speech-to-Text API
 
-This is a simple API that converts **speech (audio)** into **text** using OpenAI’s pre-trained **Whisper model** (via `faster-whisper`).  
-It is built with **FastAPI** and runs locally or on a server.
+This project provides a REST API for converting speech (audio files) into text using OpenAI’s Whisper model.
+It is built with FastAPI and can be integrated into apps (e.g., WhatsApp clone, mobile apps, or web apps).
 
-## 🚀 Features
-- Accepts audio files (`.mp3`, `.wav`, `.m4a`, etc.).
-- Auto language detection (works for English, Urdu, Hindi, Arabic, etc.).
-- Returns transcription in JSON format.
-- Easy to run with Python.
+🚀 Features
 
+Uses pre-trained Whisper model (small, medium, or large).
 
-## 🛠️ Installation & Setup
+Accepts .mp3, .wav, .m4a audio formats.
 
-### 1. Clone this repository
-```bash
-git clone https://github.com/Ahmedaliuajk/Whisper_model_audio_to_text/tree/main
+Returns JSON output with detected language and transcribed text.
+
+Simple REST API endpoint /transcribe.
+
+📦 Installation
+
+Clone this repository:
+
+git clone https://github.com/YOUR_USERNAME/whisper-api.git
 cd whisper-api
 
-### 2. Install dependencies
-Make sure you have Python 3.9+ installed, then run:
 
+Create a virtual environment:
+
+python -m venv venv
+venv\Scripts\activate    # On Windows
+# OR
+source venv/bin/activate # On Mac/Linux
+
+
+Install dependencies:
 
 pip install -r requirements.txt
-Also install ffmpeg:
 
-Windows: choco install ffmpeg
+▶️ Run the API
 
-Linux (Debian/Ubuntu): sudo apt-get install ffmpeg
+Start the FastAPI server with:
 
-### 3. Run the API
+``` python -m uvicorn main:app --reload ```
 
-python -m uvicorn main:app --reload
-You should see:
+Server will start at:
+```👉 http://127.0.0.1:8000```
 
-Uvicorn running on http://127.0.0.1:8000
-📌 Usage
-Open your browser at 👉 http://127.0.0.1:8000/docs
-(Swagger UI will appear).
+You can open Swagger UI for testing:
+```👉 http://127.0.0.1:8000/docs```
 
-Click on POST /transcribe → Try it out.
+📡 API Endpoint
+🔹 POST /transcribe
 
-Upload an audio file and press Execute.
+URL:
 
-You’ll get a JSON response like:
+```http://127.0.0.1:8000/transcribe```
 
+
+Input:
+
+An audio file (file) sent as multipart/form-data.
+
+Output (JSON):
 
 {
   "language": "en",
   "text": "Hello, how are you?"
 }
 
-📦 API Endpoint
-POST /transcribe
-Input: audio file (.mp3, .wav, .m4a)
+🧪 Example Usage
+✅ Python Example
+```
+import requests
 
-Output: JSON
+url = "http://127.0.0.1:8000/transcribe"
+files = {"file": open("test.mp3", "rb")}
+response = requests.post(url, files=files)
 
-{
-  "language": "ur",
-  "text": "آپ کیسے ہیں"
-}
-🔧 Configurations
-In main.py you can change:
+print(response.json())
+```
 
 
-model = WhisperModel("small", device="cpu", compute_type="int8")
-Models: tiny, base, small, medium, large-v3
-
-Device: "cpu" or "cuda" (if GPU available)
-
-Compute type: int8, float16, float32 (affects speed/accuracy)
-
-Author
-Developed by Ahmed Ali during internship.
-Uses OpenAI Whisper + FastAPI.
-
+📂 Project Structure
+whisper_api/
+│── main.py            # FastAPI app
+│── requirements.txt   # Dependencies
+│── README.md          # Documentation
